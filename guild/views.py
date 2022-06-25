@@ -17,6 +17,8 @@ def get_base_context():
         'subgroups': RaidGroup.objects.filter(primary=False),
         'aboutroster': GuildSetting.objects.get(key='aboutroster').value,
 
+        'discordserver': GuildSetting.objects.get(key='discordserver').value,
+
         'codeofconduct': GuildSetting.objects.get(key='codeofconduct').value,
     }
     return context
@@ -59,7 +61,7 @@ def submit_apply(request):
 
     response = requests.post(mUrl, json=data)
 
-    return redirect('index')
+    return redirect('discord')
 
 def apply(request):
     context = get_base_context()
@@ -83,6 +85,11 @@ def charts(request):
     context['class_count'] = classes.count()
 
     return render(request, 'charts.html', context)
+
+def discord(request):
+    context = get_base_context()
+
+    return render(request, 'discord.html', context)
 
 def index(request):
     context = get_base_context()

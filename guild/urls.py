@@ -10,6 +10,7 @@ urlpatterns = [
     # Apply to the Guild
     path('apply', views.apply, name='apply'),
     path('submit_apply', views.submit_apply, name='submit_apply'),
+    path('discord', views.discord, name='discord'),
     # Graphs are neat
     path('charts', views.charts, name='charts'),
 ]
